@@ -234,7 +234,7 @@ angular.module("master-app", ["slider-directive"]).controller("popup-controller"
         brightnessSlider: {
             min: 0,
             max: 1,
-            value: $scope.randBetween(.7, .8),
+            value: $scope.randBetween(0, .1),
             onEndEdit: function () {
                 $scope.derpa.activeProcessing = true;
 
