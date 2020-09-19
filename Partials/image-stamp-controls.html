@@ -1,0 +1,111 @@
+﻿
+    <div style="padding-left: 5px; padding-bottom: 5px;">
+        <div class="clearfix">
+            <div class="pull-left">
+                <select class="form-control" ng-change="mod_pepe_stamp.update();" ng-model="mod_pepe_stamp.selectedStamp" ng-options="stamp as stamp.name for stamp in mod_pepe_stamp.stamps"></select>
+
+            </div>
+            <div class="pull-left">
+                <div>
+                    <div class="image-stamp-button" ng-class="{ selected: mod_pepe_stamp.size == .075 }" ng-click="mod_pepe_stamp.size = .075; mod_pepe_stamp.update()">
+                        Small
+                    </div>
+                    <div class="image-stamp-button" ng-class="{ selected: mod_pepe_stamp.size == .125 }" ng-click="mod_pepe_stamp.size = .125; mod_pepe_stamp.update()">
+                        Medium
+                    </div>
+                    <div class="image-stamp-button" ng-class="{ selected: mod_pepe_stamp.size == .2 }" ng-click="mod_pepe_stamp.size = .2; mod_pepe_stamp.update()">
+                        Large
+                    </div>
+                </div>
+            </div>
+            <div class="pull-left" style="padding: 15px; background-color: #333;">
+                <div class="image-stamp-control">
+                    <div class="image-stamp-square ul" ng-click="mod_pepe_stamp.upLeft = !mod_pepe_stamp.upLeft; mod_pepe_stamp.update();" ng-class="{ selected: mod_pepe_stamp.upLeft }">
+
+                    </div>
+                    <div class="image-stamp-square ur" ng-click="mod_pepe_stamp.upRight = !mod_pepe_stamp.upRight; mod_pepe_stamp.update();" ng-class="{ selected: mod_pepe_stamp.upRight }">
+
+                    </div>
+                    <div class="image-stamp-square bl" ng-click="mod_pepe_stamp.downLeft = !mod_pepe_stamp.downLeft; mod_pepe_stamp.update();" ng-class="{ selected: mod_pepe_stamp.downLeft }">
+
+                    </div>
+                    <div class="image-stamp-square br" ng-click="mod_pepe_stamp.downRight = !mod_pepe_stamp.downRight; mod_pepe_stamp.update();" ng-class="{ selected: mod_pepe_stamp.downRight }">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<style>
+    .image-stamp-control {
+        width: 50px;
+        height: 50px;
+        position:relative;
+    }
+
+    .image-stamp-square {
+        position:absolute;
+        width: 50%;
+        height: 50%;
+        border: solid 1px white;
+        cursor:pointer;
+        background-color:transparent;
+    }
+
+    .image-stamp-square.selected {
+        background-color:#ccc;
+    }
+
+    .image-stamp-square:hover {
+        background-color:#999;
+    }
+
+    .image-stamp-button {
+        cursor: pointer;
+        padding: 3px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 80px;
+        border: solid 1px #999;
+        border-radius: 3px;
+        text-align:center;
+        font-size: 11px;
+    }
+
+    .image-stamp-button:hover {
+        background-color:#ccc;
+    }
+
+    .image-stamp-button.selected {
+        background-color:#0094ff;
+        color:white;
+        cursor:default;
+    }
+
+    .ul {
+        border-top-left-radius: 3px;
+        left: 0px;
+        top: 0px;
+    }
+
+    .ur {
+        border-top-right-radius: 3px;
+        right: 0px;
+        top: 0px;
+    }
+
+    .bl {
+        border-bottom-left-radius: 3px;
+        left: 0px;
+        bottom: 0px;
+    }
+
+    .br {
+        border-bottom-right-radius: 3px;
+        right: 0px;
+        bottom: 0px;
+    }
+</style>

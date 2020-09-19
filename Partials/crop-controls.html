@@ -1,0 +1,119 @@
+﻿
+    <div style="padding-left: 5px; padding-bottom: 5px;">
+        <div class="clearfix">
+            <div class="pull-left">
+                <div>
+                    <div class="image-stamp-button" ng-class="{ selected: mod_crop.size == .02 }" ng-click="mod_crop.size = .02; mod_crop.update()">
+                        Small
+                    </div>
+                    <div class="image-stamp-button" ng-class="{ selected: mod_crop.size == .05 }" ng-click="mod_crop.size = .05; mod_crop.update()">
+                        Medium
+                    </div>
+                    <div class="image-stamp-button" ng-class="{ selected: mod_crop.size == .1 }" ng-click="mod_crop.size = .1; mod_crop.update()">
+                        Large
+                    </div>
+                </div>
+            </div>
+            <div class="pull-left" style="padding: 15px; background-color: #ddd;">
+                <div class="image-stamp-control">
+                    <div class="image-stamp-square ls" ng-click="mod_crop.left = !mod_crop.left; mod_pepe_stamp.update();" ng-class="{ selected: mod_crop.left }">
+
+                    </div>
+                    <div class="image-stamp-square rs" ng-click="mod_crop.right = !mod_crop.right; mod_pepe_stamp.update();" ng-class="{ selected: mod_crop.right }">
+
+                    </div>
+                    <div class="image-stamp-square ts" ng-click="mod_crop.top = !mod_crop.top; mod_pepe_stamp.update();" ng-class="{ selected: mod_crop.top }">
+
+                    </div>
+                    <div class="image-stamp-square bs" ng-click="mod_crop.bottom = !mod_crop.bottom; mod_pepe_stamp.update();" ng-class="{ selected: mod_crop.bottom }">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<style>
+    .image-stamp-control {
+        width: 50px;
+        height: 50px;
+        position:relative;
+    }
+
+    .image-stamp-square {
+        position:absolute;
+        border: solid 2px white;
+        cursor:pointer;
+        background-color:transparent;
+    }
+
+        .image-stamp-square.selected {
+            background-color: #333;
+            z-index:1000;
+        }
+
+        .image-stamp-square:hover {
+            background-color: #999;
+            z-index: 999;
+        }
+
+    .image-stamp-button {
+        cursor: pointer;
+        padding: 3px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 80px;
+        border: solid 1px #999;
+        border-radius: 3px;
+        text-align:center;
+        font-size: 11px;
+    }
+
+    .image-stamp-button:hover {
+        background-color:#ccc;
+    }
+
+    .image-stamp-button.selected {
+        background-color:#0094ff;
+        color:white;
+        cursor:default;
+    }
+
+    .ls {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        top: 0px;
+        bottom: 0px;
+        width: 15px;
+        left: 0px;
+    }
+
+    .rs {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        top: 0px;
+        bottom: 0px;
+        width: 15px;
+        right: 0px;
+    }
+
+    .ts {
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+        left: 0px;
+        right: 0px;
+        height: 15px;
+        top: 0px;
+    }
+
+    .bs {
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        left: 0px;
+        right: 0px;
+        height: 15px;
+        bottom: 0px;
+    }
+</style>
