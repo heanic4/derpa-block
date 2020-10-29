@@ -1,6 +1,8 @@
 
 /*
- FUCK OFF DEEP STATE CUNTS. WE ARE THE NEWS.
+ FUCK OFF DEEP STATE CUNTS. 
+ WE ARE THE NEWS.
+ AND FUCK JANNIES.
  */
 
 
@@ -25,6 +27,52 @@ angular.module("master-app", ["slider-directive"]).controller("popup-controller"
 
         return Math.round(value * mult) / mult;
     };
+
+    $scope.clickCopyWallet = function (wallet) {
+        var inp = $("#wallet" + wallet.id)[0];
+
+        inp.select();
+        inp.setSelectionRange(0, 99999);
+
+        document.execCommand("copy");
+
+        $timeout(function () {
+            alert("Address Copied");
+        }, 5);
+        
+    }
+
+    $scope.closePopup = function () {
+        $scope.showingDonate = false;
+    }
+
+    $scope.cryptoWallets = [
+        {
+            id: 1,
+            name: "Bitcoin (BTC)",
+            address: "382MrNkzJCyRPiTQ3fjeS88kUbCnUZA5H1"
+        },
+        {
+            id: 2,
+            name: "Ripple (XRP)",
+            address: "rE2SwpwMU4SjkJXoDqrdj4rVsnBK2BDkD5"
+        },
+        {
+            id: 3,
+            name: "Ethereum (ETH)",
+            address: "0x0e73a3c3e6a0ce01956e04730f8ad13654f975f6"
+        },
+        {
+            id: 4,
+            name: "Litecoin (LTC)",
+            address: "MW7TM2ZaX1tzrqU3YNwDqUenVd1f9Jp6nr"
+        },
+        {
+            id: 5,
+            name: "Dash (DASH)",
+            address: "XiKkdHWM5cXpxxLGagfkCKataDSPtJ7ucY"
+        }
+    ];
 
     $scope.mod_crop = {
         active: false,
@@ -96,50 +144,56 @@ angular.module("master-app", ["slider-directive"]).controller("popup-controller"
             {
                 name: "Original Pepe",
                 imageName: "originalPepe",
-                image: document.getElementById("originalPepe"),
+                image: new Image(),
+                url: "/Images/originalPepe.png",
                 isCustom: false,
                 mult: 1,
-                loaded: document.getElementById("originalPepe").complete,
+                loaded: false
             },
             {
                 name: "DERPA BLOCK",
                 imageName: "derpaIcon",
-                image: document.getElementById("derpaIcon"),
+                image: new Image(),
+                url: "/Images/derpa-icon.png",
                 isCustom: false,
                 mult: 1.25,
-                loaded: document.getElementById("derpaIcon").complete,
+                loaded: false
             },
             {
                 name: "Trump Laugh",
                 imageName: "trumpLaugh",
-                image: document.getElementById("trumpLaugh"),
+                image: new Image(),
+                url: "/Images/trump-laugh.png",
                 isCustom: false,
                 mult: 1,
-                loaded: document.getElementById("trumpLaugh").complete,
+                loaded: false
             },
             {
                 name: "Q Flag Icon",
                 imageName: "qicon",
-                image: document.getElementById("qicon"),
+                image: new Image(),
+                url: "/Images/qicon.png",
                 isCustom: false,
                 mult: 1,
-                loaded: document.getElementById("qicon").complete,
+                loaded: false
             },
             {
                 name: "WWG1WGA",
                 imageName: "wwg1wga",
-                image: document.getElementById("wwg1wga"),
+                image: new Image(),
+                url: "/Images/wwg1wga.png",
                 isCustom: false,
                 mult: 2,
-                loaded: document.getElementById("wwg1wga").complete,
+                loaded: false
             },
             {
                 name: "Angry NPC",
                 imageName: "angryNPC",
-                image: document.getElementById("angryNPC"),
+                image: new Image(),
+                url: "/Images/angryNPC.png",
                 isCustom: false,
                 mult: 1,
-                loaded: document.getElementById("angryNPC").complete,
+                loaded: false
             }
         ],
         update: function () {
@@ -155,12 +209,17 @@ angular.module("master-app", ["slider-directive"]).controller("popup-controller"
         },
         readyStamp: function (stamp) {
 
-            if (!stamp.loaded && !stamp.isCustom) {
-                $scope.mod_pepe_stamp.onload = function () {
 
-                    $scope.stamp.loaded = true;
+
+
+            if (!stamp.loaded && !stamp.isCustom) {
+                stamp.image.onload = function () {
+
+                    stamp.loaded = true;
                     $scope.derpa.updateImageCtx();
                 }
+
+                stamp.image.src = stamp.url;
             }
         },
         init: function () {
@@ -306,26 +365,70 @@ angular.module("master-app", ["slider-directive"]).controller("popup-controller"
 
             for (var g = 0; g < grid.length - 1; g++) {
                 for (var h = 0; h < grid[g].length - 1; h++) {
-                    $scope.mod_tri_rec.triangles.push({
-                        corners: [
-                            [grid[g][h].x, grid[g][h].y],
-                            [grid[g + 1][h + 1].x, grid[g + 1][h + 1].y],
-                            [grid[g][h + 1].x, grid[g][h + 1].y]
-                        ],
-                        color: $scope.mod_tri_rec.getColor()
-                    });
-                    $scope.mod_tri_rec.triangles.push({
-                        corners: [
-                            [grid[g][h].x, grid[g][h].y],
-                            [grid[g + 1][h].x, grid[g + 1][h].y],
-                            [grid[g + 1][h + 1].x, grid[g + 1][h + 1].y]
-                        ],
-                        color: $scope.mod_tri_rec.getColor()
-                    });
+
+                    if ($scope.randBetween(0, 100) > 50) {
+
+                        $scope.mod_tri_rec.triangles.push({
+                            corners: [
+                                [grid[g][h].x, grid[g][h].y],
+                                [grid[g + 1][h].x, grid[g + 1][h].y],
+                                [grid[g][h + 1].x, grid[g][h + 1].y]
+                            ],
+                            color: $scope.mod_tri_rec.getColor()
+                        });
+                        $scope.mod_tri_rec.triangles.push({
+                            corners: [
+                                [grid[g + 1][h + 1].x, grid[g + 1][h + 1].y],
+                                [grid[g + 1][h].x, grid[g + 1][h].y],
+                                [grid[g][h + 1].x, grid[g][h + 1].y]
+                            ],
+                            color: $scope.mod_tri_rec.getColor()
+                        });
+
+                    } else {
+
+                        $scope.mod_tri_rec.triangles.push({
+                            corners: [
+                                [grid[g][h].x, grid[g][h].y],
+                                [grid[g + 1][h + 1].x, grid[g + 1][h + 1].y],
+                                [grid[g][h + 1].x, grid[g][h + 1].y]
+                            ],
+                            color: $scope.mod_tri_rec.getColor()
+                        });
+                        $scope.mod_tri_rec.triangles.push({
+                            corners: [
+                                [grid[g][h].x, grid[g][h].y],
+                                [grid[g + 1][h].x, grid[g + 1][h].y],
+                                [grid[g + 1][h + 1].x, grid[g + 1][h + 1].y]
+                            ],
+                            color: $scope.mod_tri_rec.getColor()
+                        });
+                    }
                 }
             }
         },
-        modify: function (imageManager) {
+        modifyCtx: function () {
+
+            $scope.mod_tri_rec.update();
+
+            for (var g = 0; g < $scope.mod_tri_rec.triangles.length; g++) {
+                $scope.ctx.beginPath();
+                $scope.ctx.moveTo($scope.mod_tri_rec.triangles[g].corners[0][0], $scope.mod_tri_rec.triangles[g].corners[0][1]);
+                $scope.ctx.lineTo($scope.mod_tri_rec.triangles[g].corners[1][0], $scope.mod_tri_rec.triangles[g].corners[1][1]);
+                $scope.ctx.lineTo($scope.mod_tri_rec.triangles[g].corners[2][0], $scope.mod_tri_rec.triangles[g].corners[2][1]);
+                $scope.ctx.closePath();
+
+                var rgba = "rgba(";
+                rgba += $scope.mod_tri_rec.triangles[g].color.r + ",";
+                rgba += $scope.mod_tri_rec.triangles[g].color.g + ",";
+                rgba += $scope.mod_tri_rec.triangles[g].color.b + ",";
+                rgba += $scope.mod_tri_rec.intensitySlider.value + ")";
+                // the outline
+                $scope.ctx.fillStyle = rgba;
+                $scope.ctx.fill();
+            }
+        }
+        /*modify: function (imageManager) {
             $scope.mod_tri_rec.update();
 
             for (var x = 0; x < $scope.derpa.imageManager.width; x++) {
@@ -342,7 +445,7 @@ angular.module("master-app", ["slider-directive"]).controller("popup-controller"
                     }
                 }
             }
-        }
+        }*/
     };
 
     $scope.toggleModActive = function () {
