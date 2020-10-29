@@ -85,6 +85,8 @@ angular.module("master-app", ["slider-directive"]).controller("popup-controller"
         controlsTemplate: "/Partials/crop-controls.html",
         update: function () {
 
+            $scope.mod_crop.active = true;
+
             if ($scope.mod_pepe_stamp.timeout != null) {
                 $timeout.cancel($scope.mod_pepe_stamp.timeout);
                 $scope.mod_pepe_stamp.timeout = null;
@@ -197,6 +199,8 @@ angular.module("master-app", ["slider-directive"]).controller("popup-controller"
             }
         ],
         update: function () {
+
+            $scope.mod_pepe_stamp.active = true;
 
             if ($scope.mod_pepe_stamp.timeout != null) {
                 $timeout.cancel($scope.mod_pepe_stamp.timeout);
