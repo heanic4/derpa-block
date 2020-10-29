@@ -647,6 +647,10 @@ angular.module("master-app", ["slider-directive"]).controller("popup-controller"
         },
         updateImageCtx: function () {
 
+            if ($scope.derpa.imageManager == null) {
+                return;
+            }
+
             var canvas = document.createElement("canvas");
             $scope.canvas = canvas;
             canvas.width = $scope.derpa.srcImage.width;
