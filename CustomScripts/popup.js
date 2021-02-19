@@ -71,6 +71,11 @@ angular.module("master-app", ["slider-directive"]).controller("popup-controller"
             id: 5,
             name: "Dash (DASH)",
             address: "XiKkdHWM5cXpxxLGagfkCKataDSPtJ7ucY"
+        },
+        {
+            id: 6,
+            name: "Monero (XMR)",
+            address: "43mCMAJiC18hh4EVUAHuxrFGjdVzeixkx6VGMUjrFRTpi7fRKJy1Wog2mdvvyyfYmsc4syrixcSknCoNFqYFzV3JU7i5n7K"
         }
     ];
 
